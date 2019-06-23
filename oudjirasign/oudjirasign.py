@@ -1,6 +1,6 @@
 import time
 import argparse
-from module import *
+from .module import *
 
 
 def main():

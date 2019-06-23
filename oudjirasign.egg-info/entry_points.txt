@@ -1,0 +1,3 @@
+[console_scripts]
+oudjirasign = oudjira_sign.oudjirasign:main
+
