@@ -23,7 +23,7 @@ setup(
     ],
     packages=["meteo"],
     include_package_data=True,
-    install_requires=["pycrypto==2.6.1"],
+    install_requires=["pycrypto"],
     entry_points={
         "console_scripts": [
             "oudjirasign=oudjira_sign.oudjirasign:main",
