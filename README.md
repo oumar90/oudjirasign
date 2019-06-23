@@ -4,8 +4,8 @@ oudjirasign est un module python de signature électronique.
 
 ## Installation
 
-Following query on terminal will provide you the weather details of "delhi" for next 3 days.
+pour installer ce package il suffit d'ouvrir une terminal et tapper la commande suivante:
 
 ```
-meteo -q delhi -d 3
+pip3 install oudjirasign
 ```

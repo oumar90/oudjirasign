@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 from setuptools import setup
 
 def readme():
@@ -9,7 +12,7 @@ def readme():
 setup(
     name="oudjirasign",
     version="1.0.0",
-    description="oudjirasign est un module python de signature électronique..",
+    description="oudjirasign est un module python de signature electronique.",
     long_description=readme(),
     long_description_content_type="text/markdown",
     url="https://github.com/oumar90/oudjirasign",
@@ -21,7 +24,7 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
     ],
-    packages=["meteo"],
+    packages=["oudjira_sign"],
     include_package_data=True,
     install_requires=["pycrypto"],
     entry_points={
