@@ -28,7 +28,8 @@ pip3 install oudjirasign
 
 - pour plus d'information, n'hésiter pas consulter l'aide, en suivant les étapes suivantes:
 
-``` >>> import oudjirasign as osy
+``` 
+	>>> import oudjirasign as osy
 	>>> help(osy)
 ```
 - générer une paire de clefs
