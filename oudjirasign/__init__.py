@@ -12,10 +12,12 @@ from Crypto.Hash import SHA256
 from Crypto.Signature import PKCS1_v1_5
 
 """
-Comme son nom l'indique, oudirasign est un module de signature électronique, 
-elle permet de signer numériquement les documents électronique. En plus elle permet 
-également de de générer des pairs de clefs de type RSA, chiffrer/chiffre de message et bien d'autre.
-Pour plus d'information veiller tapper help(oudjirasign).
+DESCRIPTION:
+
+	Comme son nom l'indique, oudirasign est un module de signature électronique, 
+	elle permet de signer numériquement les documents électronique. En plus elle permet 
+	également de chiffrer/chiffre de message et bien d'autre.
+	
 """
 
 __author__="Oumar Djimé Ratou"
@@ -25,7 +27,12 @@ __copyright__="Copy Right 2019, ITS"
 # Generate rsa keys
 def generatersakeys(length=2048):
 	""" Fonction rsakeys(bits) permet  générer une paire de clé RSA 
-	elle prend en paramètre la taille de clé, exemple : 2048.*
+	elle prend en paramètre la taille de clé et reourne un tuple (privatekey, publickey).
+
+	=============================================
+
+	Exemple :
+		(privatekey, publickey) = generatersakeys(taille) // par defaut taille=2048
 	"""
 	generate_random_number = Random.new().read
 	key=RSA.generate(length, generate_random_number)
@@ -33,19 +40,28 @@ def generatersakeys(length=2048):
 	publickey=key.publickey().exportKey()
 	return privatekey, publickey
 
-# Exportation de clé privée
-def exportPrivateKey(privatekey):
-	""" Cette fonction permet de exporter la clé privé, elle prend en paramètre use clé privée """
+# Importation de clé privée
+def importPrivateKey(privatekey):
+	""" Cette fonction permet de importer la clé privé,
+	 elle prend en paramètre use clé privée """
 	return RSA.importKey(privatekey)
 
-# Exportation de clé public
-def exportPublicKey(publickey):
-	""" Cette fonction permet de exporter la clé public, elle prend en paramètre use clé public """
+# Importation de clé public
+def importPublicKey(publickey):
+	""" Cette fonction permet de exporter la clé public, 
+	elle prend en paramètre use clé public """
 	return RSA.importKey(publickey)
 
 # Chiffrement un message
 def chiffre(message,pubkey):
-	""" Cette fonction permet de chiffrer un message, elle prend en paramètre le message et la clé public """
+	""" Cette fonction permet de chiffrer un message,
+	 elle prend en paramètre le message et la clé public et retourne le message chiffré.
+
+	 ==========================================
+	
+	Exemple :
+		message_chiffre = chiffre(message_clair, publickey) 
+	  """
 	#key = RSA.importKey(open(pubkey).read()) # Si la clé est stocker sur un fichier
 	cipher = PKCS1_OAEP.new(pubkey)
 	ciphertext = cipher.encrypt(message.encode("utf-8"))
@@ -54,7 +70,15 @@ def chiffre(message,pubkey):
 
 # Dehiffrement d'un message
 def dechiffre(ciphertext,privbkey):
-	""" Cette fonction permet de déchiffrer un message, elle prend en paramètre le message chiffré et la clé privée """
+	""" Cette fonction permet de déchiffrer un message, 
+	elle prend en paramètre le message chiffré et la clé privée
+	et retourne le message en claire.
+
+	========================================
+
+	Exemple :
+		dechiffre = dechiffre(message_chiffre, privatekey)
+	 """
 	#key = RSA.importKey(open(privbkey).read()) # Si la clé est stocker sur un fichier
 	cipher = PKCS1_OAEP.new(privbkey)
 	message = cipher.decrypt(ciphertext).decode("utf-8")
@@ -63,7 +87,15 @@ def dechiffre(ciphertext,privbkey):
 
 # Fonction de hachage
 def hacher(message):
-	""" Cette fonction permet de hacher un message, elle prend en paramètre le message en claire """
+	""" Cette fonction permet de hacher un message,
+	 elle prend en paramètre le message en claire .
+	 elle retourne le hache d'un message.
+
+	 =======================================
+
+	 Exemple :
+	 	hache = hacher(message_clair)
+	 """
 	
 	return SHA256.new(message.encode("utf-8"))
 
@@ -71,7 +103,12 @@ def hacher(message):
 def signer(message,privatekey):
 	""" Cette fonction permet de signer un message, 
 	elle prend en paramètre 02 arguments, 
-	le haché et la clé privée 
+	le haché et la clé privée et retourne la signature.
+
+	=========================================
+
+	Exemple :
+		signature = signer(message_claire, privatekey)
 	"""
 	hache = SHA256.new(message.encode("utf-8"))
 	hache.hexdigest()
@@ -86,8 +123,14 @@ def signer(message,privatekey):
 
 # Fonction de Verification
 def verifier(message, publickey, signature):
-	""" Cette fonction permet de verifier la signature d'un message, elle prend en paramètre 03 arguments, 
-	le haché, la clé public et la signature 
+	""" Cette fonction permet de verifier la signature d'un message, 
+	elle prend en paramètre 03 arguments, 
+	le message, la clé public et la signature. Retourne un boolean (True or False)
+
+	=======================================
+
+	Exemple : 
+		verifier = verifier(message, publickey, signature)
 	"""
 	hache = SHA256.new(message.encode("utf-8"))
 	# hache.hexdigest()
@@ -112,6 +155,7 @@ def savekeys(privakeyname, publickeyname):
 		f_public.close()
 
 def main():
+	""" Fonction principale """
 	# create argument parser object 
 	parser = argparse.ArgumentParser(description = "Comme son nom l'indique, oudirasign est un module de signature électronique, elle permet de signer numériquement les documents et chiffrer/chiffre de message.") 
   
