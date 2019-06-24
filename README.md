@@ -18,7 +18,7 @@ pour installer ce package il suffit d'ouvrir une terminal et tapper la commande 
 pip3 install oudjirasign
 ```
 
-## Fonctionnalités
+## Fonctionnalitées
 - **génération de pair de clef RSA**
 - **chiffrer / déchiffrer un message**
 - **signer un message grâce à la clef privée**
