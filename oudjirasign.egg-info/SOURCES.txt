@@ -2,8 +2,7 @@ LICENSE
 MANIFEST.in
 README.md
 setup.py
-oudjira_sign/module.py
-oudjira_sign/oudjirasign.py
+oudjirasign/__init__.py
 oudjirasign.egg-info/PKG-INFO
 oudjirasign.egg-info/SOURCES.txt
 oudjirasign.egg-info/dependency_links.txt

@@ -29,7 +29,7 @@ setup(
     install_requires=["pycrypto"],
     entry_points={
         "console_scripts": [
-            "oudjirasign=oudjirasign.oudjirasign:main",
+            "oudjirasign=oudjirasign:main",
         ]
     },
 )

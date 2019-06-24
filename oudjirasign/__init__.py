@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import time
+import argparse
 
 import codecs
 
@@ -11,7 +13,9 @@ from Crypto.Signature import PKCS1_v1_5
 
 """
 Comme son nom l'indique, oudirasign est un module de signature électronique, 
-elle permet de signer numériquement les documents et chiffrer/chiffre de message.
+elle permet de signer numériquement les documents électronique. En plus elle permet 
+également de de générer des pairs de clefs de type RSA, chiffrer/chiffre de message et bien d'autre.
+Pour plus d'information veiller tapper help(oudjirasign).
 """
 
 __author__="Oumar Djimé Ratou"
@@ -19,24 +23,24 @@ __copyright__="Copy Right 2019, ITS"
 
 
 # Generate rsa keys
-def generatersakeys(taille=2048):
+def generatersakeys(length=2048):
 	""" Fonction rsakeys(bits) permet  générer une paire de clé RSA 
 	elle prend en paramètre la taille de clé, exemple : 2048.*
 	"""
 	generate_random_number = Random.new().read
-	key=RSA.generate(taille, generate_random_number)
+	key=RSA.generate(length, generate_random_number)
 	privatekey = key.exportKey()
 	publickey=key.publickey().exportKey()
-	return privatekey.decode('utf-8'), publickey.decode('utf-8')
+	return privatekey, publickey
 
 # Exportation de clé privée
-def importPrivateKey(privatekey):
-	""" Cette fonction permet de importer la clé privé, elle prend en paramètre use clé privée """
+def exportPrivateKey(privatekey):
+	""" Cette fonction permet de exporter la clé privé, elle prend en paramètre use clé privée """
 	return RSA.importKey(privatekey)
 
-# importation de clé public
-def importPublicKey(publickey):
-	""" Cette fonction permet de importer la clé public, elle prend en paramètre use clé public """
+# Exportation de clé public
+def exportPublicKey(publickey):
+	""" Cette fonction permet de exporter la clé public, elle prend en paramètre use clé public """
 	return RSA.importKey(publickey)
 
 # Chiffrement un message
@@ -50,8 +54,7 @@ def chiffre(message,pubkey):
 
 # Dehiffrement d'un message
 def dechiffre(ciphertext,privbkey):
-	""" Cette fonction permet de déchiffrer un message, 
-	elle prend en paramètre le message chiffré et la clé privée """
+	""" Cette fonction permet de déchiffrer un message, elle prend en paramètre le message chiffré et la clé privée """
 	#key = RSA.importKey(open(privbkey).read()) # Si la clé est stocker sur un fichier
 	cipher = PKCS1_OAEP.new(privbkey)
 	message = cipher.decrypt(ciphertext).decode("utf-8")
@@ -60,38 +63,41 @@ def dechiffre(ciphertext,privbkey):
 
 # Fonction de hachage
 def hacher(message):
-	""" Cette fonction permet de hacher un message, 
-	elle prend en paramètre le message en claire """
+	""" Cette fonction permet de hacher un message, elle prend en paramètre le message en claire """
 	
 	return SHA256.new(message.encode("utf-8"))
 
 # Fonction de Signature
-def signer(message,pvkey):
+def signer(message,privatekey):
 	""" Cette fonction permet de signer un message, 
 	elle prend en paramètre 02 arguments, 
 	le haché et la clé privée 
 	"""
-	hache = SHA256.new(message)
+	hache = SHA256.new(message.encode("utf-8"))
+	hache.hexdigest()
 	sig = PKCS1_v1_5.new(privatekey)
 	signature = sig.sign(hache)
 	hexfy = codecs.getencoder('hex')
 	ms = hexfy(signature)[0]
 
+	# return signature
 	return ms.decode("utf-8")
 
+
 # Fonction de Verification
-def verifier(message, pbkey, signature):
-	""" Cette fonction permet de verifier la signature d'un message,
-	 elle prend en paramètre 03 arguments, 
+def verifier(message, publickey, signature):
+	""" Cette fonction permet de verifier la signature d'un message, elle prend en paramètre 03 arguments, 
 	le haché, la clé public et la signature 
 	"""
-	hache = SHA256.new(message)
+	hache = SHA256.new(message.encode("utf-8"))
+	# hache.hexdigest()
 	signer = PKCS1_v1_5.new(publickey)
 
 	hexfy = codecs.getdecoder('hex')
 	ms = hexfy(signature)[0]
 
 	return signer.verify(hache, ms)
+
 
 def savekeys(privakeyname, publickeyname):
 	""" Fonction qui permet de sauvegarder les clefs dans les fichiers 
@@ -104,4 +110,29 @@ def savekeys(privakeyname, publickeyname):
 	with open("publickey.pem", "w") as f_public:
 		f_public.write(publickeyname)
 		f_public.close()
+
+def main():
+	# create argument parser object 
+	parser = argparse.ArgumentParser(description = "Comme son nom l'indique, oudirasign est un module de signature électronique, elle permet de signer numériquement les documents et chiffrer/chiffre de message.") 
+  
+	parser.add_argument("-t", "--taille", type = int, nargs = 1, 
+	                    metavar="taille", default = None, help = "génère une paire da clef RSA de taille t.") 
+
+
+	# parse the arguments from standard input 
+	args = parser.parse_args()
+
+
+	print("génération de paire de clefs....")
+	time.sleep(1)
+	private, public = generatersakeys(args.taille[0])
+	savekeys(private, public)
+	print("Les clefs sont générer avec succès...")
+	print("privatekey.pem, publickey.pem")
+	
+
+
+if __name__ == "__main__":
+	main()
+
 
