@@ -12,7 +12,7 @@ def readme():
 setup(
     name="oudjirasign",
     version="0.0.2",
-    description="oudjirasign est un module python de signature electronique.",
+    description="Module python de signature electronique.",
     long_description=readme(),
     long_description_content_type="text/markdown",
     url="https://github.com/oumar90/oudjirasign",
@@ -20,6 +20,7 @@ setup(
     author_email="oudjira90@gmail.com",
     license="MIT",
     classifiers=[
+        'Development Status :: Beta',
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
