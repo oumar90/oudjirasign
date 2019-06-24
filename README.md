@@ -58,3 +58,16 @@ pip3 install oudjirasign
 	>>> dechiffre
 	'Hello world'
 ```
+- signer / verifier un message
+```
+	>>> signature = osy.signer(message, privatekey)
+	>>> 
+	>>> signature
+	'a1e7660f532b0374bf476f35f3b2e6bc0eb07dfa771f816aaccac08c184c972a96dafccd0851df88b6398b37773a2d3ba03028187dd5e6c92a42ca0762c07ff1d157de5daf486b31b3c6f1da506fe5a3c0a2be2260e0e47175b37f9896994b3f340603c09d48502f4aff4e3895d57b5e751c8592e0ed33fdb9e4a3610bbb58402ff235237acd874db1dc8b6f318328415fcae9687812b1caa8d65bfb74da49ffdc36c0f0946165fb1f97f74d6de43f3d5e982674de7b24c52bfd88653885b692331e5523e8676a5d90ef81302a38c33ca4391d035545d19cdd1479b2a4ea015877ab39780221be425a28f6439b40f4d51e91414294ca5792eb2108abc228c8f5'
+	>>> 
+	>>> 
+	>>> verifier = osy.verifier(message, public, signature)
+	>>> 
+	>>> verifier
+	True
+```
