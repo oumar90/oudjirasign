@@ -20,7 +20,7 @@ setup(
     author_email="oudjira90@gmail.com",
     license="MIT",
     classifiers=[
-        'Development Status :: Beta',
+        'Development Status :: 4 - Beta',
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
