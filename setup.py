@@ -11,7 +11,7 @@ def readme():
 
 setup(
     name="oudjirasign",
-    version="0.0.2",
+    version="0.0.0.1",
     description="Module python de signature electronique.",
     long_description=readme(),
     long_description_content_type="text/markdown",
@@ -27,7 +27,7 @@ setup(
     ],
     packages=["oudjirasign"],
     include_package_data=True,
-    install_requires=["pycrypto"],
+    install_requires=["pycryptodome"],
     entry_points={
         "console_scripts": [
             "oudjirasign=oudjirasign:main",

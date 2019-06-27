@@ -2,6 +2,12 @@
 
 oudjirasign est un module python de signature électronique.
 
+==========================================================
+
+|PyPI| |license|
+
+_______________________________________________________
+
 ### Prérequis
 
 -  [Python 3.7](https://www.python.org/downloads/release/python-373/)  (recommended)

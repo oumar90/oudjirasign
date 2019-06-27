@@ -1,4 +1,5 @@
 oudjirasign.egg-info/
 build/
 dist/
+venv/
 *.pyc
