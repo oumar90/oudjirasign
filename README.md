@@ -3,8 +3,8 @@
 oudjirasign est un module python de signature électronique.
 
 ==========================================================
-
-|PyPI| |license|
+[![PyPI](https://img.shields.io/badge/PyPi-v1.5-f39f37.svg)](https://pypi.org/project/oudjirasign/)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/oumar90/oudjirasign/blob/master/LICENSE)
 
 _______________________________________________________
 
