@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
 import time
-from time import  sleep
 import datetime
-from progress.bar import Bar
 import argparse
-
 import codecs
+
+from time import  sleep
+from progress.bar import Bar
 
 from Crypto.PublicKey import RSA
 from Crypto import Random
