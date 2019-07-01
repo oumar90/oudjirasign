@@ -13,11 +13,7 @@ _______________________________________________________
 
 -  [Python 3.7](https://www.python.org/downloads/release/python-373/)  (recommended)
 
-```
-pip3 install pycryptodrome
-
-pip3 install progress
- ```
+-  les modules necessaires sont installé automatiquement lors de l'installation.
 
 ## Installation
 
