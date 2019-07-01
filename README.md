@@ -11,7 +11,7 @@ _______________________________________________________
 
 ### Prérequis
 
--  [Python 3.7](https://www.python.org/downloads/release/python-373/)<abbr title="Pour plus d'information">(recommended)</abbr>
+-  [Python 3.7](https://www.python.org/downloads/release/python-373/)(recommended)
 
 -  les modules necessaires sont installé automatiquement lors de l'installation.
 
