@@ -1,4 +1,4 @@
-# Module de signature numérique
+# Module de signature électronique
 
 oudjirasign est un module python de signature électronique.
 
