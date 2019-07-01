@@ -27,7 +27,7 @@ setup(
     ],
     packages=["oudjirasign"],
     include_package_data=True,
-    install_requires=["pycryptodome, progress, cryptography, argparse"],
+    install_requires=["pycryptodome","progress", "cryptography", "argparse"],
     entry_points={
         "console_scripts": [
             "oudjirasign=oudjirasign:main",
