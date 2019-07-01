@@ -34,29 +34,30 @@ pip3 install oudjirasign
 
 - pour plus d'information, n'hésiter pas consulter l'aide, en suivant les étapes suivantes:
 
-``` 
+```python 
 	>>> import oudjirasign as osy
 	>>> help(osy)
 ```
 - générer une paire de clefs
-```
+
+```python
 	>>> import oudjirasign as osy
 	>>> help(osy)
-	>>> privatekey, publickey = osy.generatersakeys() // par defaut c'est 2048 bits
+	>>> privatekey, publickey = osy.generatersakeys() # par defaut c'est 2048 bits
 	>>> privatekey
-	>>> b'-----BEGIN RSA PRIVATE KEY-----\nMIIEpQIBAAKCAQEAlNmLSdCPSH4NAkRurojzncPVoszS+KovtOD/zWkr2iMI3HdxLDVUU+bJUedM071o/+jTr89UZsuOYi64WU4RppdPeF\nseXxkDPL+3T3xhQAgnHf7JHz4IAnE49USwh+luJqEY/t5cDGPl3BvQc=
-	...
+	>>> b'-----BEGIN RSA PRIVATE KEY-----\nMIIEpQIBAAKCAQEAlNmLSdCPSH4NAkRurojzncPVoszS+KovtOD/zWkr2iMI3HdxLDVUU+bJUedM071o/+jTr89UZsuOYi64WU4RppdPeF\nseXxkDPL+3T3xhQAgnHf7JHz4IAnE49USwh+luJqEY/t5cDGPl3BvQc=\
+	...\
 	\n-----END RSA PRIVATE KEY-----'
 
 	>>> public
-	b'-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlNmLSdCPSH4NAkRurojz\nncPVoszS+KovtOD/zW
-	......
+	b'-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlNmLSdCPSH4NAkRurojz\nncPVoszS+KovtOD/zW\
+	......\
 	\n-----END PUBLIC KEY-----'
 	>>> 
 ```
 - chiffrer / déchiffrer un message
 
-```
+```python
 	>>> message = "Hello world"
 	>>> chiffre = osy.chiffre(message, publickey)
 	>>> privatekey= osy.importPrivateKey(privatekey)
@@ -71,7 +72,7 @@ pip3 install oudjirasign
 	'Hello world'
 ```
 - signer / verifier un message
-```
+```python
 	>>> signature = osy.signer(message, privatekey)
 	>>> 
 	>>> signature
@@ -84,17 +85,17 @@ pip3 install oudjirasign
 	True
 ```
 - Pour générer un certificat auto-signé, il suffit tapper la commande suivante dans le console :
-```shell
-	$oudjirasign -t 2048
+```bash
+	$ oudjirasign -t 2048
 	génération de paire de clefs... |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@| 100% # Bar de progression
 
 	Les clefs sont générées avec succès et sont stockées dans les fichiers ci-dessous.
 	privatekey.pem, publickey.pem
 
-	Voulez-vous générer un certificat associé à votre votre paire de clef(Y/n) : y
+	Voulez-vous générer un certificat associé à votre votre paire de clef(Y/n\) : y
 	génération du certificat en cours...
 	Entrer le nom de votre pays : [Ex. CM, pour Cameroun] : cm
-	Entrer le nom de l'État ou de la province : [Ex. Centre] : centre
+	Entrer le nom de l\'État ou de la province : [Ex. Centre] : centre
 	Entrer le nom de votre ville : [Ex. Yaoundé] : yde
 	Entrer le nom de votre organisation : [Ex. ITS] : its
 	Entrer le nom de votre section : [Ex. SECURITÉ] : info
