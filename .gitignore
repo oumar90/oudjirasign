@@ -2,4 +2,11 @@ oudjirasign.egg-info/
 build/
 dist/
 venv/
+__pycache__/
 *.pyc
+*.bin
+*.pdf
+rsagen.py
+*.pdf
+*.pem
+*.txt
