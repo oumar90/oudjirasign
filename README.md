@@ -13,6 +13,8 @@ _______________________________________________________
 
 -  [Python 3.7](https://www.python.org/downloads/release/python-373/)(recommended)
 
+-  [Pip 3](https://pip.pypa.io/en/stable/installing/)
+
 -  les modules necessaires sont installé automatiquement lors de l'installation.
 
 ## Installation
