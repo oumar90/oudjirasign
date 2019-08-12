@@ -15,8 +15,6 @@ _______________________________________________________
 
 -  [Pip 3](https://pip.pypa.io/en/stable/installing/)
 
--  les modules necessaires sont installé automatiquement lors de l'installation.
-
 ## Installation
 
 pour installer ce package il suffit d'ouvrir une terminal et tapper la commande suivante:
